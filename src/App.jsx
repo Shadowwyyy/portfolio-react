@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Hero from './components/Hero';
@@ -5,6 +6,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import NotFound from './components/NotFound';
 import './App.css';
 
 function App() {
@@ -21,25 +23,33 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <AnimatePresence mode="wait">
-        {currentView === 'hero' && (
-          <Hero key="hero" onNavigate={handleNavigate} />
-        )}
-        {currentView === 'about' && (
-          <About key="about" onBack={handleBack} />
-        )}
-        {currentView === 'projects' && (
-          <Projects key="projects" onBack={handleBack} />
-        )}
-        {currentView === 'skills' && (
-          <Skills key="skills" onBack={handleBack} />
-        )}
-        {currentView === 'contact' && (
-          <Contact key="contact" onBack={handleBack} />
-        )}
-      </AnimatePresence>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <div className="app">
+            <AnimatePresence mode="wait">
+              {currentView === 'hero' && (
+                <Hero key="hero" onNavigate={handleNavigate} />
+              )}
+              {currentView === 'about' && (
+                <About key="about" onBack={handleBack} />
+              )}
+              {currentView === 'projects' && (
+                <Projects key="projects" onBack={handleBack} />
+              )}
+              {currentView === 'skills' && (
+                <Skills key="skills" onBack={handleBack} />
+              )}
+              {currentView === 'contact' && (
+                <Contact key="contact" onBack={handleBack} />
+              )}
+            </AnimatePresence>
+          </div>
+        } />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+      </Routes>
+    </Router>
   );
 }
 

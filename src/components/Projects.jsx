@@ -10,14 +10,14 @@ function Projects({ onBack }) {
       tag: 'FEATURED',
       description: 'Real-time audio-reactive 3D visualizer using Three.js and Web Audio API. Transforms music into immersive visual experiences with dynamic geometry and shader effects.',
       tech: ['Three.js', 'Web Audio API', 'JavaScript', 'GLSL'],
-      link: 'https://github.com/Shadowwyyy'
+      link: 'https://github.com/Shadowwyyy/Audio-visualizer-3d'
     },
     {
       title: 'FIGROUP',
       tag: 'SaaS',
       description: 'Full-stack SaaS finance platform for group expense management and financial planning. Built with modern web technologies and scalable architecture.',
       tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-      link: 'https://github.com/Shadowwyyy'
+      link: 'https://github.com/Shadowwyyy/Figroup'
     },
     {
       title: 'FINSYNC',
@@ -32,7 +32,14 @@ function Projects({ onBack }) {
       description: 'Python-based web scraping tool for mechanical keyboard enthusiasts. Aggregates pricing data, availability, and specifications across multiple retailers.',
       tech: ['Python', 'BeautifulSoup', 'Selenium', 'Data Mining'],
       link: 'https://github.com/Shadowwyyy/Keyboard-Scraper'
-    }
+    },
+    {
+      title: 'PORTFOLIO WEBSITE',
+      tag: 'REACT',
+      description: 'Personal portfolio built with React and Framer Motion featuring Persona 5-inspired design. Includes interactive mouse-tracking effects, smooth animations, and integrated contact form.',
+      tech: ['React', 'Framer Motion', 'JavaScript', 'CSS3'],
+      link: 'https://github.com/Shadowwyyy/portfolio-react'
+}
   ];
 
   return (
