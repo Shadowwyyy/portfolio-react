@@ -11,19 +11,111 @@ function Contact({ onBack }) {
     message: ''
   });
   const [status, setStatus] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear error when user starts typing
+    if (errors[e.target.name]) {
+      setErrors({
+        ...errors,
+        [e.target.name]: ''
+      });
+    }
   };
 
+const validateEmail = (email) => {
+  // Check minimum length
+  if (email.length < 6) {
+    return 'Email address is too short';
+  }
+  
+  // Check basic format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return 'Please enter a valid email address';
+  }
+  
+  // Block consecutive dots or invalid special chars
+  if (email.includes('..') || /[!#$%&*+=?^`{|}~]/.test(email)) {
+    return 'Email contains invalid characters';
+  }
+  
+  // Block emails with numbers only in local part
+  const localPart = email.split('@')[0];
+  if (/^\d+$/.test(localPart)) {
+    return 'Please use a valid email address';
+  }
+  
+  // Block common disposable email domains
+  const disposableDomains = [
+    'tempmail.com', 'guerrillamail.com', 'mailinator.com', '10minutemail.com',
+    'throwaway.email', 'yopmail.com', 'maildrop.cc', 'temp-mail.org',
+    'getnada.com', 'trashmail.com', 'fakeinbox.com', 'sharklasers.com'
+  ];
+  const domain = email.split('@')[1]?.toLowerCase();
+  if (disposableDomains.includes(domain)) {
+    return 'Please use a permanent email address';
+  }
+  
+  return '';
+};
+
   const handleSubmit = (e) => {
-    setStatus('success');
-    setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+    e.preventDefault();
+    
+    // Validate all fields
+    const newErrors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else {
+      const emailError = validateEmail(formData.email);
+      if (emailError) {
+        newErrors.email = emailError;
+      }
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+    
+    // If there are errors, don't submit
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    
+    // If validation passes, submit the form
+    const form = e.target;
+    const formDataToSend = new FormData(form);
+    
+    fetch(form.action, {
+      method: 'POST',
+      body: formDataToSend,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(() => {
+      setStatus('success');
+      setTimeout(() => {
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => {
+          onBack();
+        }, 1500);
+      }, 1000);
+    }).catch(() => {
+      setStatus('error');
+    });
   };
 
   const contactLinks = [
@@ -80,48 +172,56 @@ function Contact({ onBack }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          {/* Hidden FormSubmit configs */}
           <input type="hidden" name="_subject" value="New contact from Portfolio!" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           
           <div className="form-group">
-            <label htmlFor="name">NAME</label>
+            <label htmlFor="name">
+              NAME <span className="required">*</span>
+            </label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              required
               placeholder="Your name"
+              className={errors.name ? 'error' : ''}
             />
+            {errors.name && <span className="error-message">{errors.name}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">EMAIL</label>
+            <label htmlFor="email">
+              EMAIL <span className="required">*</span>
+            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
               placeholder="your.email@example.com"
+              className={errors.email ? 'error' : ''}
             />
+            {errors.email && <span className="error-message">{errors.email}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="message">MESSAGE</label>
+            <label htmlFor="message">
+              MESSAGE <span className="required">*</span>
+            </label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
-              required
               placeholder="Tell me about your project or opportunity..."
               rows="5"
+              className={errors.message ? 'error' : ''}
             />
+            {errors.message && <span className="error-message">{errors.message}</span>}
           </div>
 
           <motion.button
@@ -141,6 +241,16 @@ function Contact({ onBack }) {
               animate={{ opacity: 1, y: 0 }}
             >
               ✓ Message sent successfully!
+            </motion.div>
+          )}
+          
+          {status === 'error' && (
+            <motion.div
+              className="form-message error"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              ✗ Failed to send message. Please try again.
             </motion.div>
           )}
         </motion.form>
