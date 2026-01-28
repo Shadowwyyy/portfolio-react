@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useMouseShadow } from '../hooks/useMouseShadow';
 
 function Skills({ onBack }) {
+  const textShadow = useMouseShadow();
+
   const skillCategories = [
     {
       title: 'LANGUAGES',
@@ -28,7 +31,7 @@ function Skills({ onBack }) {
       exit={{ opacity: 0 }}
     >
       <div className="section-header">
-        <h2 className="section-title">SKILLS</h2>
+        <h2 className="section-title" style={{ textShadow }}>SKILLS</h2>
         <div className="back-btn" onClick={onBack}>
           <span>← BACK</span>
         </div>

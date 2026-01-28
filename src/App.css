@@ -647,3 +647,40 @@
   margin-bottom: 1.5rem;
   text-align: center;
 }
+/* Resume Download Button */
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #E60012 0%, #A00008 100%);
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  border: 2px solid transparent;
+  transform: skew(-5deg);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(230, 0, 18, 0.3);
+  margin: 2rem 0;
+}
+
+.resume-btn:hover {
+  border-color: #FFFFFF;
+  box-shadow: 0 8px 32px rgba(230, 0, 18, 0.5);
+}
+
+.resume-btn span {
+  transform: skew(5deg);
+}
+
+.download-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.resume-btn:hover .download-icon {
+  transform: skew(5deg) translateY(3px);
+}

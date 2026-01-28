@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useMouseShadow } from '../hooks/useMouseShadow';
 
 function Projects({ onBack }) {
+  const textShadow = useMouseShadow();
+
   const projects = [
     {
       title: '3D AUDIO VISUALIZER',
@@ -40,7 +43,7 @@ function Projects({ onBack }) {
       exit={{ opacity: 0 }}
     >
       <div className="section-header">
-        <h2 className="section-title">PROJECTS</h2>
+        <h2 className="section-title" style={{ textShadow }}>PROJECTS</h2>
         <div className="back-btn" onClick={onBack}>
           <span>← BACK</span>
         </div>

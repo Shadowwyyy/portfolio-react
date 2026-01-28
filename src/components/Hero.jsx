@@ -51,7 +51,7 @@ const textShadow = `
         </div>
         <div className="tagline">
           <span className="tagline-text">
-            // Full-Stack Developer | Backend Specialist | Music Tech Enthusiast
+            MS Software Engineering | Building production-ready backend systems
           </span>
         </div>
       </motion.div>

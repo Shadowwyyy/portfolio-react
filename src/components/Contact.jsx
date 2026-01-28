@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useMouseShadow } from '../hooks/useMouseShadow';
 
 function Contact({ onBack }) {
+  const textShadow = useMouseShadow();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,11 +20,11 @@ function Contact({ onBack }) {
   };
 
   const handleSubmit = (e) => {
-  setStatus('success');
-  setTimeout(() => {
-    setFormData({ name: '', email: '', message: '' });
-  }, 1000);
-};
+    setStatus('success');
+    setTimeout(() => {
+      setFormData({ name: '', email: '', message: '' });
+    }, 1000);
+  };
 
   const contactLinks = [
     {
@@ -49,7 +52,7 @@ function Contact({ onBack }) {
       exit={{ opacity: 0 }}
     >
       <div className="section-header">
-        <h2 className="section-title">CONTACT</h2>
+        <h2 className="section-title" style={{ textShadow }}>CONTACT</h2>
         <div className="back-btn" onClick={onBack}>
           <span>← BACK</span>
         </div>
@@ -68,79 +71,79 @@ function Contact({ onBack }) {
           </p>
         </div>
 
-<motion.form
-  className="contact-form"
-  action="https://formsubmit.co/sharma.je@northeastern.edu"
-  method="POST"
-  onSubmit={handleSubmit}
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.3 }}
->
-  {/* Hidden FormSubmit configs */}
-  <input type="hidden" name="_subject" value="New contact from Portfolio!" />
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_template" value="table" />
-  
-  <div className="form-group">
-    <label htmlFor="name">NAME</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      value={formData.name}
-      onChange={handleChange}
-      required
-      placeholder="Your name"
-    />
-  </div>
+        <motion.form
+          className="contact-form"
+          action="https://formsubmit.co/sharma.je@northeastern.edu"
+          method="POST"
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          {/* Hidden FormSubmit configs */}
+          <input type="hidden" name="_subject" value="New contact from Portfolio!" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          
+          <div className="form-group">
+            <label htmlFor="name">NAME</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="Your name"
+            />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="email">EMAIL</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      value={formData.email}
-      onChange={handleChange}
-      required
-      placeholder="your.email@example.com"
-    />
-  </div>
+          <div className="form-group">
+            <label htmlFor="email">EMAIL</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="your.email@example.com"
+            />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="message">MESSAGE</label>
-    <textarea
-      id="message"
-      name="message"
-      value={formData.message}
-      onChange={handleChange}
-      required
-      placeholder="Tell me about your project or opportunity..."
-      rows="5"
-    />
-  </div>
+          <div className="form-group">
+            <label htmlFor="message">MESSAGE</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              placeholder="Tell me about your project or opportunity..."
+              rows="5"
+            />
+          </div>
 
-  <motion.button
-    type="submit"
-    className="submit-btn"
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 0.98 }}
-  >
-    <span>SEND MESSAGE</span>
-    <span className="arrow">→</span>
-  </motion.button>
+          <motion.button
+            type="submit"
+            className="submit-btn"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span>SEND MESSAGE</span>
+            <span className="arrow">→</span>
+          </motion.button>
 
-  {status === 'success' && (
-    <motion.div
-      className="form-message success"
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-    >
-      ✓ Message sent successfully!
-    </motion.div>
-  )}
-</motion.form>
+          {status === 'success' && (
+            <motion.div
+              className="form-message success"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              ✓ Message sent successfully!
+            </motion.div>
+          )}
+        </motion.form>
 
         <p className="links-label">OR REACH OUT DIRECTLY:</p>
         <div className="contact-links">
