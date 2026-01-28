@@ -6,7 +6,7 @@ A portfolio website built with React, featuring interactive animations, mouse-tr
 
 ## Features
 
-- **Signature red/black color scheme with diagonal stripes, bold typography, and smooth animations
+- Signature red/black color scheme with diagonal stripes, bold typography, and smooth animations
 - **Interactive Mouse Effects**: Dynamic shadow tracking on text elements that follows cursor movement
 - **Smooth Navigation**: Animated transitions between sections using Framer Motion
 - **Contact Form**: Integrated with FormSubmit for direct email submissions
