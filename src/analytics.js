@@ -1,5 +1,4 @@
 import ReactGA from 'react-ga4';
-
 export const initGA = () => {
   ReactGA.initialize('G-V0PMRCY9CJ'); // Replace with your actual ID
 };
