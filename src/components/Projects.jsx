@@ -5,6 +5,13 @@ function Projects({ onBack }) {
   const textShadow = useMouseShadow();
 
   const projects = [
+      {
+    title: 'TASKFLOW',
+    tag: 'AWS',
+    description: 'Distributed job queue system with AWS SQS demonstrating asynchronous processing, fault tolerance, and exponential backoff retry logic. Features real-time monitoring dashboard and multiple job handlers.',
+    tech: ['AWS SQS', 'Node.js', 'Express', 'React', 'AWS SDK'],
+    link: 'https://github.com/Shadowwyyy/taskflow'
+  },
     {
       title: '3D AUDIO VISUALIZER',
       tag: 'FEATURED',
