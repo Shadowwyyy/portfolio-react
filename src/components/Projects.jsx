@@ -5,19 +5,40 @@ function Projects({ onBack }) {
   const textShadow = useMouseShadow();
 
   const projects = [
-      {
-    title: 'TASKFLOW',
-    tag: 'AWS',
-    description: 'Distributed job queue system with AWS SQS demonstrating asynchronous processing, fault tolerance, and exponential backoff retry logic. Features real-time monitoring dashboard and multiple job handlers.',
-    tech: ['AWS SQS', 'Node.js', 'Express', 'React', 'AWS SDK'],
-    link: 'https://github.com/Shadowwyyy/taskflow'
-  },
+    {
+      title: 'JOBWISE',
+      tag: 'AI/RAG',
+      description: 'RAG-powered job search assistant with AI-driven skill matching, personalized cover letter generation, and interview preparation. Built with FastAPI, PostgreSQL pgvector, OpenAI embeddings, and React.',
+      tech: ['Python', 'FastAPI', 'pgvector', 'OpenAI', 'React', 'PostgreSQL'],
+      link: 'https://github.com/Shadowwyyy/jobwise'
+    },
+    {
+      title: 'TASKFLOW',
+      tag: 'AWS',
+      description: 'Distributed job queue system with AWS SQS demonstrating asynchronous processing, fault tolerance, and exponential backoff retry logic. Features real-time monitoring dashboard and multiple job handlers.',
+      tech: ['AWS SQS', 'Node.js', 'Express', 'React', 'AWS SDK'],
+      link: 'https://github.com/Shadowwyyy/taskflow'
+    },
+    {
+      title: 'PORTFOLIO WEBSITE',
+      tag: 'REACT',
+      description: 'Personal portfolio built with React and Framer Motion featuring Persona 5-inspired design. Includes interactive mouse-tracking effects, smooth animations, and integrated contact form.',
+      tech: ['React', 'Framer Motion', 'JavaScript', 'CSS3'],
+      link: 'https://github.com/Shadowwyyy/portfolio-react'
+    },
     {
       title: '3D AUDIO VISUALIZER',
       tag: 'FEATURED',
       description: 'Real-time audio-reactive 3D visualizer using Three.js and Web Audio API. Transforms music into immersive visual experiences with dynamic geometry and shader effects.',
       tech: ['Three.js', 'Web Audio API', 'JavaScript', 'GLSL'],
       link: 'https://github.com/Shadowwyyy/Audio-visualizer-3d'
+    },
+    {
+      title: 'KEYBOARD SCRAPER',
+      tag: 'AUTOMATION',
+      description: 'Python-based web scraping tool for mechanical keyboard enthusiasts. Aggregates pricing data, availability, and specifications across multiple retailers.',
+      tech: ['Python', 'BeautifulSoup', 'Selenium', 'Data Mining'],
+      link: 'https://github.com/Shadowwyyy/Keyboard-Scraper'
     },
     {
       title: 'FIGROUP',
@@ -32,21 +53,7 @@ function Projects({ onBack }) {
       description: 'Financial management system with automated transaction tracking, budget analysis, and data visualization. Designed for personal and small business use.',
       tech: ['JavaScript', 'REST API', 'SQL', 'Chart.js'],
       link: 'https://github.com/Shadowwyyy/FinSync'
-    },
-    {
-      title: 'KEYBOARD SCRAPER',
-      tag: 'AUTOMATION',
-      description: 'Python-based web scraping tool for mechanical keyboard enthusiasts. Aggregates pricing data, availability, and specifications across multiple retailers.',
-      tech: ['Python', 'BeautifulSoup', 'Selenium', 'Data Mining'],
-      link: 'https://github.com/Shadowwyyy/Keyboard-Scraper'
-    },
-    {
-      title: 'PORTFOLIO WEBSITE',
-      tag: 'REACT',
-      description: 'Personal portfolio built with React and Framer Motion featuring Persona 5-inspired design. Includes interactive mouse-tracking effects, smooth animations, and integrated contact form.',
-      tech: ['React', 'Framer Motion', 'JavaScript', 'CSS3'],
-      link: 'https://github.com/Shadowwyyy/portfolio-react'
-}
+    }
   ];
 
   return (
