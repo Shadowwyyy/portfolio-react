@@ -4,7 +4,7 @@ import { useMouseShadow } from '../hooks/useMouseShadow';
 function Skills({ onBack }) {
   const textShadow = useMouseShadow();
 
-  const skillCategories = [
+const skillCategories = [
     {
       title: 'LANGUAGES',
       skills: ['JavaScript', 'Python', 'Java', 'SQL']
@@ -15,11 +15,15 @@ function Skills({ onBack }) {
     },
     {
       title: 'BACKEND',
-      skills: ['Node.js', 'REST APIs', 'GraphQL', 'FastAPI']
+      skills: ['Node.js', 'REST APIs', 'FastAPI', 'PostgreSQL', 'pgvector']
+    },
+    {
+      title: 'AI / ML',
+      skills: ['LangChain', 'OpenAI API', 'RAG Pipelines', 'Vector Embeddings']
     },
     {
       title: 'TOOLS & CLOUD',
-      skills: ['AWS', 'Docker', 'MongoDB', 'Git']
+      skills: ['AWS (SQS, EC2, S3)', 'Docker', 'Git', 'CI/CD', 'MongoDB']
     }
   ];
 
