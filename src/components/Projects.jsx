@@ -13,6 +13,13 @@ function Projects({ onBack }) {
       link: 'https://github.com/Shadowwyyy/jobwise'
     },
     {
+  title: 'PROBE',
+  tag: 'AI',
+  description: 'AI-powered code review agent that analyzes GitHub pull requests and surfaces bugs, security vulnerabilities, and performance issues. Built with FastAPI, Claude API, and React.',
+  tech: ['Python', 'FastAPI', 'Claude API', 'React', 'GitHub API'],
+  link: 'https://github.com/Shadowwyyy/PRobe'
+    },
+    {
       title: 'TASKFLOW',
       tag: 'AWS',
       description: 'Distributed job queue system with AWS SQS demonstrating asynchronous processing, fault tolerance, and exponential backoff retry logic. Features real-time monitoring dashboard and multiple job handlers.',
